@@ -1324,6 +1324,9 @@ static void ssr_cleanup(int reason)
     int pwr_state = BT_VND_PWR_OFF;
     int ret;
     unsigned char trig_ssr = 0xEE;
+#ifndef ENABLE_ANT
+    (void)reason;  // unused
+#endif
 
     ALOGI("++%s", __FUNCTION__);
 
