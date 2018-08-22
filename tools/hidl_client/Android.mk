@@ -1,7 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
 
-
-
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:=     \
@@ -20,8 +18,8 @@ LOCAL_SHARED_LIBRARIES += libutils
 LOCAL_SHARED_LIBRARIES += libhidlbase
 LOCAL_SHARED_LIBRARIES += libhidltransport
 LOCAL_SHARED_LIBRARIES += android.hardware.bluetooth@1.0
-LOCAL_SHARED_LIBRARIES += com.qualcomm.qti.ant@1.0
-LOCAL_SHARED_LIBRARIES += vendor.qti.hardware.fm@1.0
+#LOCAL_SHARED_LIBRARIES += com.qualcomm.qti.ant@1.0
+#LOCAL_SHARED_LIBRARIES += vendor.qti.hardware.fm@1.0
 LOCAL_SHARED_LIBRARIES += liblog
 
 LOCAL_MODULE_PATH_32 := $(TARGET_OUT_VENDOR)/lib

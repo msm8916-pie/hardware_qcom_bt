@@ -29,6 +29,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <android/hardware/bluetooth/1.0/IBluetoothHci.h>
 
+/*
 #include <com/qualcomm/qti/ant/1.0/IAntHci.h>
 #include <com/qualcomm/qti/ant/1.0/IAntHciCallbacks.h>
 #include <com/qualcomm/qti/ant/1.0/types.h>
@@ -36,6 +37,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vendor/qti/hardware/fm/1.0/IFmHci.h>
 #include <vendor/qti/hardware/fm/1.0/IFmHciCallbacks.h>
 #include <vendor/qti/hardware/fm/1.0/types.h>
+*/
 
 #include <sys/socket.h>
 #include <cutils/sockets.h>
@@ -51,12 +53,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using android::hardware::bluetooth::V1_0::IBluetoothHci;
 using ::android::hardware::hidl_vec;
+/*
 using com::qualcomm::qti::ant::V1_0::IAntHci;
 using vendor::qti::hardware::fm::V1_0::IFmHci;
+*/
 
 extern android::sp<IBluetoothHci> btHci;
+/*
 extern android::sp<IAntHci> antHci;
 extern android::sp<IFmHci> fmHci;
+*/
 
 extern int server_fd;
 
@@ -122,6 +128,7 @@ void *process_tool_data(void *arg) {
                 btHci->sendScoData(*data);
                 break;
 
+/*
             case ANT_PACKET_TYPE_CTRL:
                 antHci->sendAntControl(*data);
                 break;
@@ -134,6 +141,7 @@ void *process_tool_data(void *arg) {
                 ALOGI("%s: Send FM Cmd ", __func__);
                 fmHci->sendHciCommand(*data);
                 break;
+*/
             default:
                 ALOGE("%s: Unsupported packet type: %d", __func__, packet_type);
         }
@@ -162,6 +170,7 @@ static int get_preamble_length(char packet_type) {
             preamble_len = BT_EVENT_PREAMBLE_SIZE;
             break;
 
+/*
         case ANT_PACKET_TYPE_CTRL:
             preamble_len = ANT_COMMAND_PREAMBLE_SIZE;
             break;
@@ -177,6 +186,7 @@ static int get_preamble_length(char packet_type) {
         case FM_PACKET_TYPE_EVENT:
             preamble_len = FM_EVENT_PREAMBLE_SIZE;
             break;
+*/
 
         default:
             break;
@@ -204,6 +214,7 @@ static int get_pkt_len_offset(char packet_type) {
             len_offset = BT_LENGTH_OFFSET_EVT;
             break;
 
+/*
         case ANT_PACKET_TYPE_CTRL:
             len_offset = ANT_LENGTH_OFFSET_CMD;
             break;
@@ -219,6 +230,7 @@ static int get_pkt_len_offset(char packet_type) {
         case FM_PACKET_TYPE_EVENT:
             len_offset = FM_LENGTH_OFFSET_EVT;
             break;
+*/
 
         default:
             break;
